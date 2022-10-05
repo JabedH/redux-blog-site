@@ -1,4 +1,4 @@
-import { CATEGORYSEARCH } from "./actionTypes";
+import { CATEGORYSEARCH, NAMESEARCH } from "./actionTypes";
 import initialState from "./initialState";
 
 const reducer = (state = initialState, action) => {
@@ -7,6 +7,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         status: action.payload,
+      };
+    case NAMESEARCH:
+      return {
+        ...state,
+        name: action.payload,
       };
 
     default:

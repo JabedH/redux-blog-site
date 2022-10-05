@@ -2,22 +2,19 @@ import React, { useState } from "react";
 import BlogArticle from "./BlogArticle";
 import articles from "../data/info.json";
 import { useDispatch, useSelector } from "react-redux";
-import { categorySearch } from "../redux/filters/action";
+import { categorySearch, nameSearch } from "../redux/filters/action";
 
 const Blogs = () => {
   const dispatch = useDispatch();
   const handleSelection = (status) => {
     dispatch(categorySearch(status));
   };
-  // const [newArticle, setArticle] = useState(0);
-  // const info = articles.map((article) => console.log(article));
-  // const { category } = info;
-  // const blogInfos = useSelector((state) => console.log(state.initialState));
-  // console.log(blogInfos);
+  const handleNameSelect = (name) => {
+    dispatch(nameSearch(name));
+  };
   const filters = useSelector((state) => state);
-  const { status } = filters;
-  // console.log(filters);
-  // console.log(newArticle);
+  const { status, name } = filters;
+  console.log(filters);
   return (
     <section class="relative bg-gray-50 pt-8 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-16 lg:px-8">
       <div class="absolute inset-0">
@@ -39,7 +36,17 @@ const Blogs = () => {
             className=" flex cursor-pointer"
           >
             <h3 className=" text-start bg-gray-200 px-3 rounded-3xl">
-              {status} X
+              {status}X
+            </h3>
+          </div>
+        )}
+        {filters.name !== "All" && (
+          <div
+            onClick={() => handleNameSelect("All")}
+            className=" flex cursor-pointer"
+          >
+            <h3 className=" text-start bg-gray-200 px-3 rounded-3xl">
+              {name}X
             </h3>
           </div>
         )}
@@ -47,12 +54,28 @@ const Blogs = () => {
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           {articles
             .filter((article) => {
-              const { status } = filters;
               switch (status) {
                 case "Article":
                   return article.Article;
                 case "JavaScript":
                   return article.JavaScript;
+                case "HTML":
+                  return article.HTML;
+                default:
+                  return true;
+              }
+            })
+            .filter((article) => {
+              switch (name) {
+                case "Jabed":
+                  return article.Jabed;
+                case "Tusar":
+                  return article.Tusar;
+                case "Hossain":
+                  return article.Hossain;
+                case "Rabbi":
+                  return article.Rabbi;
+
                 default:
                   return true;
               }
