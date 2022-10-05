@@ -2,7 +2,7 @@ import { CATEGORYSEARCH } from "./actionTypes";
 import initialState from "./initialState";
 
 const reducer = (state = initialState, action) => {
-  switch (state) {
+  switch (action.type) {
     case CATEGORYSEARCH:
       return {
         ...state,

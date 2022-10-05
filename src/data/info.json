@@ -2,6 +2,7 @@
   {
     "id": 1,
     "category": "Article",
+    "Article": "true",
     "title": " Boost your conversion rate",
     "author": "Jabed",
     "time": "11 Jul, 2022",
@@ -11,7 +12,8 @@
   },
   {
     "id": 2,
-    "category": "Article",
+    "category": "JavaScript",
+    "JavaScript": "true",
     "title": "How to use search engine optimization to drive sales",
     "author": "Tusar",
     "time": "08 Feb, 2022",
@@ -22,6 +24,7 @@
   {
     "id": 3,
     "category": "Article",
+    "Article": "true",
     "title": "Improve your customer experience",
     "author": "Hossain",
     "time": "20 Mar, 2022",
@@ -31,9 +34,10 @@
   },
   {
     "id": 4,
-    "category": "Article",
+    "category": "HTML",
+    "HTML": "true",
     "title": "Boost your conversion rate",
-    "author": "Raihan",
+    "author": "jabed",
     "time": "11 Jul, 2022",
     "readTime": "8 min read",
     "img": "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
@@ -42,8 +46,9 @@
   {
     "id": 5,
     "category": "Article",
+    "Article": "true",
     "title": "How to use search engine optimization to drive sales",
-    "author": "Rabbi",
+    "author": "Tusar",
     "time": "08 Feb, 2022",
     "readTime": "10 min read",
     "img": "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
@@ -51,7 +56,8 @@
   },
   {
     "id": 6,
-    "category": "Article",
+    "category": "javascript",
+    "JavaScript": "true",
     "title": "Improve your customer experience",
     "author": "Rabbi",
     "time": "20 Mar, 2022",

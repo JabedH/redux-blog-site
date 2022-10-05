@@ -1,4 +1,4 @@
-import { CATEGORYSEARCH, TITLESEARCH } from "./actionTypes";
+import { CATEGORYSEARCH } from "./actionTypes";
 
 export const categorySearch = (status) => {
   return {
@@ -6,9 +6,3 @@ export const categorySearch = (status) => {
     payload: status,
   };
 };
-// export const titleSearch = (status) => {
-//   return {
-//     type: TITLESEARCH,
-//     payload: status,
-//   };
-// };

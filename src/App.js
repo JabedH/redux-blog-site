@@ -5,7 +5,7 @@ import search from "./assets/search.svg";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Blogs from "./components/Blogs";
-import articles from "./data/info.json";
+
 
 function App() {
   return (
@@ -47,11 +47,7 @@ function App() {
             </div>
 
             {/* <!-- card grid  --> */}
-            <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-              {articles.map((article) => (
-                <Blogs />
-              ))}
-            </div>
+            <Blogs />
           </div>
         </section>
 
