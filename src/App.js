@@ -7,36 +7,19 @@ import store from "./redux/store";
 import Blogs from "./components/Blogs";
 import { useState } from "react";
 
-function debounce(fn, delay) {
-  let timeoutId;
-  return function () {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      fn();
-    }, delay);
-  };
-}
+let timeoutId;
 
 function App() {
   const [result, setResult] = useState("");
   const handleSearch = (e) => {
     e.preventDefault();
-    // if (timeoutId) {
-    //   clearTimeout(timeoutId);
-    // }
-    // timeoutId = setTimeout(() => {
-    //   const search = e.target.name.value;
-    //   console.log(search);
-    //   setResult(search);
-    // }, 500);
-
-    const search = e.target.name.value;
-    debounce(function () {
-      console.log(search);
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      const search = e.target.name.value;
       setResult(search);
-    }, 100);
+    }, 300);
   };
   return (
     <Provider store={store}>
@@ -76,7 +59,7 @@ function App() {
           </form>
         </div>
 
-        <Blogs />
+        <Blogs result={result} />
         {/* <!-- footer --> */}
         <section class="pt-6">
           <div class="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex justify-between gap-2 border-t text-sm text-slate-400">

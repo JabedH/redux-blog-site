@@ -4,7 +4,8 @@ import articles from "../data/info.json";
 import { useDispatch, useSelector } from "react-redux";
 import { categorySearch, nameSearch } from "../redux/filters/action";
 
-const Blogs = () => {
+const Blogs = ({ result }) => {
+  console.log(result);
   const dispatch = useDispatch();
   const handleSelection = (status) => {
     dispatch(categorySearch(status));
@@ -55,6 +56,15 @@ const Blogs = () => {
         {/* <!-- card grid  --> */}
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           {articles
+            .filter((article) => {
+              if (result === "") {
+                return article;
+              } else if (
+                article.title.toLowerCase().includes(result.toLowerCase())
+              ) {
+                return article;
+              }
+            })
             .filter((article) => {
               switch (status) {
                 case "Article":
