@@ -64,6 +64,9 @@ const Blogs = ({ result }) => {
               ) {
                 return article;
               }
+              // else if (clear === true) {
+              //   return article;
+              // }
             })
             .filter((article) => {
               switch (status) {

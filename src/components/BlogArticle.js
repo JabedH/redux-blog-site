@@ -18,7 +18,7 @@ const BlogArticle = ({ article }) => {
       </div>
       <div class="flex-1 bg-white p-6 flex flex-col justify-between">
         <div class="flex-1">
-          <p class="text-sm font-medium text-indigo-600">
+          <p class="text-sm font-medium text-indigo-600 text-left">
             <span
               onClick={() => handleSelection(`${category}`)}
               class="cursor-pointer inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800"
@@ -27,7 +27,7 @@ const BlogArticle = ({ article }) => {
             </span>
           </p>
 
-          <a href="#" class="block mt-1">
+          <a href="#" class="block mt-1 text-left">
             <p class="text-xl font-semibold text-gray-900">{title}</p>
           </a>
         </div>
@@ -35,10 +35,10 @@ const BlogArticle = ({ article }) => {
           <div class="flex-shrink-0">
             <img class="h-10 w-10 rounded-full" src={profile} alt="" />
           </div>
-          <div class="ml-3">
+          <div class="ml-3 text-left">
             <span
               onClick={() => handleNameSelect(`${author}`)}
-              class="text-sm font-medium text-gray-900 hover:underline cursor-pointer"
+              class=" font-medium text-gray-900 hover:underline cursor-pointer"
             >
               {author}
             </span>

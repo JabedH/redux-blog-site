@@ -6,11 +6,13 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import Blogs from "./components/Blogs";
 import { useState } from "react";
-
+import mypic from "./assets/mypic.jpg";
 let timeoutId;
 
 function App() {
   const [result, setResult] = useState("");
+  // const [clear, setClear] = useState("");
+  // console.log(clear);
   const handleSearch = (e) => {
     e.preventDefault();
     if (timeoutId) {
@@ -19,16 +21,26 @@ function App() {
     timeoutId = setTimeout(() => {
       const search = e.target.name.value;
       setResult(search);
+      e.target.name.value = "";
+      console.log(search);
     }, 300);
   };
+  // const handlerClear = (e) => {
+  //   if (e.target.value === "") {
+  //     setClear(true);
+  //   }
+  // };
   return (
     <Provider store={store}>
-      <div className="App">
+      <div className="App ">
         {/* <!-- navigation --> */}
         <nav class="bg-slate-100 shadow-md">
           <div class="max-w-7xl mx-auto px-5 lg:px-0 flex justify-between py-3 items-center">
             <a href="index.html">
-              <img class="h-10" src={mylogo} alt="Learn with Sumit" />
+              <div className="flex items-center gap-5 mx-10">
+                <img class="h-10 rounded-2xl" src={mypic} alt="jabed" />
+                <h3 className="font-bold">Jabed H Tusar</h3>
+              </div>
             </a>
           </div>
         </nav>
@@ -43,6 +55,7 @@ function App() {
          "
           >
             <input
+              // onChange={handlerClear}
               class="outline-none border-none bg-gray-50 h-full w-full mr-2"
               type="search"
               name="name"
@@ -61,17 +74,10 @@ function App() {
 
         <Blogs result={result} />
         {/* <!-- footer --> */}
-        <section class="pt-6">
-          <div class="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex justify-between gap-2 border-t text-sm text-slate-400">
-            <div>Copyright 2022 Learn with Sumit.</div>
+        <section class="pt-6 ">
+          <div class="text-sm text-gray-800 ">
             <div>
-              <a
-                href="https://youtube.com/learnwithsumit"
-                target="_blank"
-                rel="noreferrer"
-              >
-                YouTube Channel
-              </a>
+              <h3 className="text-center p-2">Copyright 2022 Jabed H Tusar.</h3>
             </div>
           </div>
         </section>
