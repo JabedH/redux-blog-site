@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import Blogs from "./components/Blogs";
 
-
 function App() {
   return (
     <Provider store={store}>
@@ -31,7 +30,7 @@ function App() {
           <img class="inline h-6 cursor-pointer" src={search} alt="Search" />
         </div>
 
-        <section class="relative bg-gray-50 pt-8 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-16 lg:px-8">
+        {/* <section class="relative bg-gray-50 pt-8 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-16 lg:px-8">
           <div class="absolute inset-0">
             <div class="bg-white h-1/3 sm:h-2/3"></div>
           </div>
@@ -45,12 +44,12 @@ function App() {
                 libero labore natus atque, ducimus sed.
               </p>
             </div>
-
-            {/* <!-- card grid  --> */}
-            <Blogs />
+            <h3>this is me x</h3>
+            <!-- card grid  -->
           </div>
-        </section>
+        </section> */}
 
+            <Blogs />
         {/* <!-- footer --> */}
         <section class="pt-6">
           <div class="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex justify-between gap-2 border-t text-sm text-slate-400">
