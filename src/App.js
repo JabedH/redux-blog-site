@@ -5,8 +5,39 @@ import search from "./assets/search.svg";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Blogs from "./components/Blogs";
+import { useState } from "react";
+
+function debounce(fn, delay) {
+  let timeoutId;
+  return function () {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+}
 
 function App() {
+  const [result, setResult] = useState("");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // if (timeoutId) {
+    //   clearTimeout(timeoutId);
+    // }
+    // timeoutId = setTimeout(() => {
+    //   const search = e.target.name.value;
+    //   console.log(search);
+    //   setResult(search);
+    // }, 500);
+
+    const search = e.target.name.value;
+    debounce(function () {
+      console.log(search);
+      setResult(search);
+    }, 100);
+  };
   return (
     <Provider store={store}>
       <div className="App">
@@ -20,36 +51,32 @@ function App() {
         </nav>
 
         {/* <!-- search --> */}
-        <div class="border mt-6 border-slate-200 flex items-center w-11/12 lg:w-1/2 mx-auto bg-gray-50 h-12 px-5 rounded-lg text-sm ring-emerald-200">
-          <input
-            class="outline-none border-none bg-gray-50 h-full w-full mr-2"
-            type="search"
-            name="search"
-            placeholder="Search"
-          />
-          <img class="inline h-6 cursor-pointer" src={search} alt="Search" />
+
+        <div>
+          <form
+            onSubmit={handleSearch}
+            class="border mt-6 border-slate-200 flex items-center w-11/12 lg:w-1/2 mx-auto bg-gray-50 h-12 px-5 rounded-lg text-sm ring-emerald-200"
+            action="
+         "
+          >
+            <input
+              class="outline-none border-none bg-gray-50 h-full w-full mr-2"
+              type="search"
+              name="name"
+              placeholder="Search"
+            />
+
+            <button type="submit">
+              <img
+                class="inline h-6 cursor-pointer"
+                src={search}
+                alt="Search"
+              />
+            </button>
+          </form>
         </div>
 
-        {/* <section class="relative bg-gray-50 pt-8 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-16 lg:px-8">
-          <div class="absolute inset-0">
-            <div class="bg-white h-1/3 sm:h-2/3"></div>
-          </div>
-          <div class="relative max-w-7xl mx-auto">
-            <div class="text-center">
-              <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-                ALL BLOGS ARE HERE
-              </h2>
-              <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
-                libero labore natus atque, ducimus sed.
-              </p>
-            </div>
-            <h3>this is me x</h3>
-            <!-- card grid  -->
-          </div>
-        </section> */}
-
-            <Blogs />
+        <Blogs />
         {/* <!-- footer --> */}
         <section class="pt-6">
           <div class="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex justify-between gap-2 border-t text-sm text-slate-400">

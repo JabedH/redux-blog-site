@@ -30,26 +30,28 @@ const Blogs = () => {
             libero labore natus atque, ducimus sed.
           </p>
         </div>
-        {filters.status !== "All" && (
-          <div
-            onClick={() => handleSelection("All")}
-            className=" flex cursor-pointer"
-          >
-            <h3 className=" text-start bg-gray-200 px-3 rounded-3xl">
-              {status}X
-            </h3>
-          </div>
-        )}
-        {filters.name !== "All" && (
-          <div
-            onClick={() => handleNameSelect("All")}
-            className=" flex cursor-pointer"
-          >
-            <h3 className=" text-start bg-gray-200 px-3 rounded-3xl">
-              {name}X
-            </h3>
-          </div>
-        )}
+        <div className="flex gap-3">
+          {filters.status !== "All" && (
+            <div
+              onClick={() => handleSelection("All")}
+              className=" flex cursor-pointer"
+            >
+              <h3 className=" text-start bg-gray-200 px-3 rounded-3xl">
+                {status} X
+              </h3>
+            </div>
+          )}
+          {filters.name !== "All" && (
+            <div
+              onClick={() => handleNameSelect("All")}
+              className=" flex cursor-pointer"
+            >
+              <h3 className=" text-start bg-gray-200 px-3 rounded-3xl">
+                {name} X
+              </h3>
+            </div>
+          )}
+        </div>
         {/* <!-- card grid  --> */}
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           {articles
