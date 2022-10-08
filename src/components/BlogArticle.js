@@ -2,15 +2,17 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { categorySearch, nameSearch } from "../redux/filters/action";
 
-const BlogArticle = ({ article }) => {
+const BlogArticle = ({ post }) => {
   const dispatch = useDispatch();
   const handleSelection = (status) => {
     dispatch(categorySearch(status));
   };
+
   const handleNameSelect = (name) => {
     dispatch(nameSearch(name));
   };
-  const { author, category, id, img, profile, readTime, time, title } = article;
+  
+  const { author, category, img, profile, readTime, time, title } = post;
   return (
     <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
       <div class="flex-shrink-0">

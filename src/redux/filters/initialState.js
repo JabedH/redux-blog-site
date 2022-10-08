@@ -1,5 +1,9 @@
+import { posts } from "../../posts";
+
 const initialState = {
-  status: "All",
-  name: 'All'
+  filtered_post: posts,
+  status: "",
+  name: "",
+  itemSearch: "",
 };
 export default initialState;

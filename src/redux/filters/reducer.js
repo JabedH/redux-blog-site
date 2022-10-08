@@ -1,4 +1,4 @@
-import { CATEGORYSEARCH, NAMESEARCH } from "./actionTypes";
+import { CATEGORYSEARCH, ITEMSREACH, NAMESEARCH } from "./actionTypes";
 import initialState from "./initialState";
 
 const reducer = (state = initialState, action) => {
@@ -12,6 +12,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         name: action.payload,
+      };
+    case ITEMSREACH:
+      return {
+        ...state,
+        itemSearch: action.payload,
       };
 
     default:

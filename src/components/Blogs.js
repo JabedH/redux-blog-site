@@ -4,8 +4,7 @@ import articles from "../data/info.json";
 import { useDispatch, useSelector } from "react-redux";
 import { categorySearch, nameSearch } from "../redux/filters/action";
 
-const Blogs = ({ result }) => {
-  console.log(result);
+const Blogs = () => {
   const dispatch = useDispatch();
   const handleSelection = (status) => {
     dispatch(categorySearch(status));
@@ -14,8 +13,24 @@ const Blogs = ({ result }) => {
     dispatch(nameSearch(name));
   };
   const filters = useSelector((state) => state);
-  const { status, name } = filters;
-  console.log(filters);
+  const { filtered_post: posts, status, name, itemSearch } = filters;
+  const authorFilter = (post) => {
+    return name ? post.author === name : post;
+  };
+
+  const categoryFilter = (post) => {
+    return status ? post.category === status : post;
+  };
+
+  const searchFilter = (post) => {
+    if (itemSearch == "") {
+      return post;
+    }
+    else if (post.title.toLowerCase().includes(itemSearch.toLowerCase())) {
+      return post;
+    }
+  
+  };
   return (
     <section class="relative bg-gray-50 pt-8 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-16 lg:px-8">
       <div class="absolute inset-0">
@@ -32,9 +47,9 @@ const Blogs = ({ result }) => {
           </p>
         </div>
         <div className="flex gap-3">
-          {filters.status !== "All" && (
+          {filters.status !== "" && (
             <div
-              onClick={() => handleSelection("All")}
+              onClick={() => handleSelection("")}
               className=" flex cursor-pointer"
             >
               <h3 className=" text-start bg-gray-200 px-3 rounded-3xl">
@@ -42,9 +57,9 @@ const Blogs = ({ result }) => {
               </h3>
             </div>
           )}
-          {filters.name !== "All" && (
+          {filters.name !== "" && (
             <div
-              onClick={() => handleNameSelect("All")}
+              onClick={() => handleNameSelect("")}
               className=" flex cursor-pointer"
             >
               <h3 className=" text-start bg-gray-200 px-3 rounded-3xl">
@@ -55,48 +70,17 @@ const Blogs = ({ result }) => {
         </div>
         {/* <!-- card grid  --> */}
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {articles
-            .filter((article) => {
-              if (result === "") {
-                return article;
-              } else if (
-                article.title.toLowerCase().includes(result.toLowerCase())
-              ) {
-                return article;
-              }
-              // else if (clear === true) {
-              //   return article;
-              // }
-            })
-            .filter((article) => {
-              switch (status) {
-                case "Article":
-                  return article.Article;
-                case "JavaScript":
-                  return article.JavaScript;
-                case "HTML":
-                  return article.HTML;
-                default:
-                  return true;
-              }
-            })
-            .filter((article) => {
-              switch (name) {
-                case "Jabed":
-                  return article.Jabed;
-                case "Tusar":
-                  return article.Tusar;
-                case "Hossain":
-                  return article.Hossain;
-                case "Rabbi":
-                  return article.Rabbi;
-
-                default:
-                  return true;
-              }
-            })
-            .map((article) => (
-              <BlogArticle article={article} key={article.id} />
+          {/* if post not found
+          {posts.length < 1 && (
+            <p className="text-xl font-bold text-red-400">No Post Found.</p>
+          )} */}
+          
+          {posts
+            .filter(searchFilter)
+            .filter(authorFilter)
+            .filter(categoryFilter)
+            .map((post) => (
+              <BlogArticle post={post} key={post.id} />
             ))}
         </div>
       </div>
@@ -105,22 +89,3 @@ const Blogs = ({ result }) => {
 };
 
 export default Blogs;
-
-// .filter((article) => {
-//   console.log(article.category);
-//   const { status } = filters;
-//   if (article.category === "Article") {
-//     return article;
-//   }
-//   return true;
-// })
-
-// .filter((article) => {
-//   const { status } = filters;
-//   switch (status) {
-//     case "JavaScript":
-//       return article.category;
-//     default:
-//       return true;
-//   }
-// })

@@ -1,35 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
 import mylogo from "./assets/lws.svg";
-import search from "./assets/search.svg";
-import { Provider } from "react-redux";
+
+import { Provider, useDispatch } from "react-redux";
 import store from "./redux/store";
 import Blogs from "./components/Blogs";
 import { useState } from "react";
 import mypic from "./assets/mypic.jpg";
-let timeoutId;
+import Search from "./components/Search";
 
 function App() {
-  const [result, setResult] = useState("");
-  // const [clear, setClear] = useState("");
-  // console.log(clear);
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      const search = e.target.name.value;
-      setResult(search);
-      e.target.name.value = "";
-      console.log(search);
-    }, 300);
-  };
-  // const handlerClear = (e) => {
-  //   if (e.target.value === "") {
-  //     setClear(true);
-  //   }
-  // };
+  
   return (
     <Provider store={store}>
       <div className="App ">
@@ -46,33 +27,9 @@ function App() {
         </nav>
 
         {/* <!-- search --> */}
+        <Search />
 
-        <div>
-          <form
-            onSubmit={handleSearch}
-            class="border mt-6 border-slate-200 flex items-center w-11/12 lg:w-1/2 mx-auto bg-gray-50 h-12 px-5 rounded-lg text-sm ring-emerald-200"
-            action="
-         "
-          >
-            <input
-              // onChange={handlerClear}
-              class="outline-none border-none bg-gray-50 h-full w-full mr-2"
-              type="search"
-              name="name"
-              placeholder="Search"
-            />
-
-            <button type="submit">
-              <img
-                class="inline h-6 cursor-pointer"
-                src={search}
-                alt="Search"
-              />
-            </button>
-          </form>
-        </div>
-
-        <Blogs result={result} />
+        <Blogs />
         {/* <!-- footer --> */}
         <section class="pt-6 ">
           <div class="text-sm text-gray-800 ">
